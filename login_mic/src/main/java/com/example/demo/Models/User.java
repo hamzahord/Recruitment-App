@@ -36,7 +36,7 @@ public class User {
 	@Column(name = "user_password")
 	private String userPassword;
 	@Column(name = "is_hashed")
-	private Boolean IsHashed;
+	private Boolean isHashed;
 	
 	
 
@@ -103,11 +103,11 @@ public class User {
 
 
 	public Boolean getIsHashed() {
-		return IsHashed;
+		return isHashed;
 	}
 
 	public void setIsHashed(Boolean Hashed) {
-		this.IsHashed= Hashed;
+		this.isHashed= Hashed;
 	}
 
 
@@ -144,7 +144,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userFirstname=" + userFirstname + ", userLastname=" + userLastname + ", userEmail=" + userEmail
-				+ ", userPassword=" + userPassword + ", IsHashed=" + IsHashed + ", roles=" + roles + ", candidates="
+				+ ", userPassword=" + userPassword + ", IsHashed=" + isHashed + ", roles=" + roles + ", candidates="
 				+ candidates + ", interviews=" + interviews + "]";
 	}
 
