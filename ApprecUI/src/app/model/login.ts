@@ -1,6 +1,6 @@
 
 
 export class Login {
-    public email!: string;
-    public password!: string;
+    email!: string;
+    password!: string;
 }

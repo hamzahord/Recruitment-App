@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   userLogin(){
 
-    this.loginserviceService.loginUser(this.userIds).subscribe(data=>this.auth.login().then(()=>{this.router.navigate([''])}), error=>alert("false ids"));
+    this.loginserviceService.loginUser(this.userIds).subscribe(data=>this.auth.login().then(()=>{this.router.navigate([''])}), error=>alert("Please enter correct Email and Password"));
     
     
   }
