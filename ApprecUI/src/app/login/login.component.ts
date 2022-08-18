@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Login } from '../model/login';
+import { AuthService } from '../service/auth.service';
 import { LoginserviceService, User } from '../service/loginservice.service';
 
 @Component({
@@ -8,20 +11,29 @@ import { LoginserviceService, User } from '../service/loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
-  users!: User[];
-
+  userIds: Login = new Login();
+  
   constructor(
-    private loginserviceService : LoginserviceService
+    private loginserviceService : LoginserviceService,
+    private auth : AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.loginserviceService.getUsers().subscribe(
-      response => this.handleSuccessfulResponse(response)
-    );
+    if(this.auth.isLoggedIn()){
+      this.router.navigate(['']);
+    }
   }
 
-  handleSuccessfulResponse(response: User[]) {
-    this.users = response;
-}
+  userLogin(){
+
+    this.loginserviceService.loginUser(this.userIds).subscribe(data=>this.auth.login().then(()=>{this.router.navigate([''])}), error=>alert("false ids"));
+    
+    
+  }
+
+  /*getRole(){
+    this.loginserviceService.loginUser(this.)
+  }*/
 
 }

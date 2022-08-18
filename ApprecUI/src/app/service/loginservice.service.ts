@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Login } from '../model/login';
 
 export class User{
   constructor(
@@ -17,14 +19,14 @@ export class User{
   providedIn: 'root'
 })
 export class LoginserviceService {
-
+  private baseUrl = "http://localhost:8080/login";
   constructor(
     private httpClient: HttpClient
   ) { }
   
-  getUsers(){
-    console.log('Test call');
-    return this.httpClient.get<User[]>('http://localhost:8080/users');
+  loginUser(loginUser: Login):Observable<Object>{
+    console.log(loginUser)
+    return this.httpClient.put(`${this.baseUrl}`, loginUser);
   }
 
 }

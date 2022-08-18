@@ -10,13 +10,13 @@
 <!-- partial:index.partial.html -->
 
 
-<form>
+<form (ngSubmit)= "userLogin()">
   <div class="form-field">
-    <input type="email" placeholder="Email" required/>
+    <input type="email" placeholder="Email" [(ngModel)] = "userIds.email" name="email" required/>
   </div>
   
   <div class="form-field">
-    <input type="password" placeholder="Password" required/>                         </div>
+    <input type="password" placeholder="Password" [(ngModel)] = "userIds.password" name="password" required/>                         </div>
   
   <div class="form-field">
     <button class="btn" type="submit">Log in</button>

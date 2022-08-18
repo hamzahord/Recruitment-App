@@ -3,8 +3,10 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Models.Candidate;
 import com.example.demo.Models.Interview;
+import com.example.demo.Models.Role;
 //import com.example.demo.Models.Role;
 import com.example.demo.Models.User;
 import com.example.demo.Repositories.CandidateRepository;
@@ -50,7 +53,7 @@ public class LoginController {
 	}
 	
 	@PutMapping("/login")
-	public User LoginTest(@RequestBody LoginRequest loginRequest) throws Exception {
+	public ResponseEntity<?> LoginTest(@RequestBody LoginRequest loginRequest) throws Exception {
 		String password = passwordEncoder.passwordEncryption(loginRequest.password);
 		List<User> users = userRepository.findByUserEmail(loginRequest.email);
 		if(users != null) {
@@ -59,11 +62,11 @@ public class LoginController {
 					passwordEncoder.UpdatePasswordNonEncoded(user.getUserPassword());
 				}
 				if (user.getUserPassword().equals(password)) {
-					return user;
+					return ResponseEntity.ok(user);
 				}
 			}
 		}
-		throw new Exception("False ID");
+		return new ResponseEntity<>( "Your age is ", new HttpHeaders() ,HttpStatus.FORBIDDEN);
 	}
 	
 	/*@Autowired
@@ -72,14 +75,24 @@ public class LoginController {
 	
 	
 	@PutMapping("/currentrole")
-	public String UserRole(@RequestBody User user) { 
-		/*List<Role> roles = roleRepository.findByRoleEnDate(null);
-		String userRole = "";
+	public ResponseEntity<?> UserRole(@RequestBody User user) throws Exception { 
+		/*List<Role> roles = roleRepository.findByRoleEnDate(user.getUserLastname());
+		
 		for(Role role : roles) {
-			userRole += role.getRoleCode();
+			if(role.getRoleEnDate()==null) {
+				userRole += role.getRoleCode();
+			}
 		}*/
-		int i = user.getRoles().size();
-		return "Hello "+ user.getUserFirstname() + " our dear " + user.getRoles().get(i-1).getRoleCode();	}
+		//String userRole = "";
+		for(int i =0; i<user.getRoles().size();i++) {
+			if(user.getRoles().get(i).getRoleEnDate()==null) {
+				return ResponseEntity.ok(user.getRoles().get(i));
+			}
+		}
+		//int i = user.getRoles().size();
+		return new ResponseEntity<>( "Your age is ", new HttpHeaders() ,HttpStatus.FORBIDDEN);
+		//return "Hello "+ user.getUserFirstname() + " our dear " + user.getRoles().get(i-1).getRoleCode();
+	}
 	
 	@Autowired
 	private CandidateRepository candidateRepository;
