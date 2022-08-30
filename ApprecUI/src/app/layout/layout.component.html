@@ -6,21 +6,31 @@
   <link rel="stylesheet" >
 
 </head>
+
+
 <body>
 
-    <div class = "actions">
-        <header>Actions</header>
+    
+
+
+    <fieldset class="actions">
+        <legend>Actions</legend>
         <ul>
-            <li>Accueil</li>
-            <li>Tous les CV</li>
-            <li>Mes CV</li>
-            <li>Tous les dossiers de candidature</li>
-            <li>Mes dossier de candidature</li>
-            <li>Mes entretiens</li>
+            <li> <a href=''>Accueil</a> </li>
+            <li> <a href='allcv'>Tous les CV</a> </li>
+            <li> <a href='mycv'>Mes CV</a> </li>
+            <li> <a href='allcand'>Tous les dossiers de candidature</a> </li>
+            <li> <a href='mycand'>Mes dossiers de candidature</a> </li>
+            <li> <a href='interview'>Mes entretiens</a> </li>
         </ul>
 
+        <div class="layout"> 
+            <router-outlet></router-outlet>
+        </div>   
 
-    </div>
+    </fieldset>
+
+    
 
 
     <form align="right" name="form1" method="post" (ngSubmit)= "logout()">
@@ -31,3 +41,4 @@
 
 </body>
 </html>
+

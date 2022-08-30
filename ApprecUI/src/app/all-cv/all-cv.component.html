@@ -1,1 +1,34 @@
-<p>all-cv works!</p>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" >
+
+</head>
+<body>
+    <h1>Tous les CV</h1>
+    <table class="table-style">
+
+      <thead>
+          <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>adresse mail</th>
+              <th>numéro de téléphone</th>
+          </tr>
+      </thead>
+  
+      <tbody>
+          <tr *ngFor="let candidate of candidates">
+              <td>{{candidate.candidateLastname}}</td>
+              <td>{{candidate.candidateFirstname}}</td>
+              <td>{{candidate.candidateEmail}}</td>
+              <td>{{candidate.candidatePhone}}</td>
+          </tr>
+      </tbody>
+
+    </table>
+</body>
+
+</html>

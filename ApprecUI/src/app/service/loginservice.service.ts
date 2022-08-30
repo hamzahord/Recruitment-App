@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Login } from '../model/login';
 
 export class User{
@@ -20,13 +20,15 @@ export class User{
 })
 export class LoginserviceService {
   private baseUrl = "http://localhost:8080/login";
+  public user!: Observable<User>;
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private httpClient: HttpClient,
+  ) {}
+
   
-  loginUser(loginUser: Login):Observable<Object>{
+  loginUser(loginUser: Login):Observable<User>{
     console.log(loginUser)
-    return this.httpClient.put(`${this.baseUrl}`, loginUser);
+    return this.httpClient.put<User>(`${this.baseUrl}`, loginUser);
   }
 
 }

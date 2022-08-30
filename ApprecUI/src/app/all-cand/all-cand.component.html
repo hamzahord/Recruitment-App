@@ -1,1 +1,95 @@
-<p>all-cand works!</p>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" >
+
+</head>
+<body>
+    <h1>Tous les candidats</h1>
+    <table class="table-style">
+
+      <thead>
+          <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>adresse mail</th>
+              <th>numéro de téléphone</th>
+              <th>Statut</th>
+          </tr>
+      </thead>
+  
+      <tbody>
+          <tr *ngFor="let candidate of candidates">
+              <td>{{candidate.candidateLastname}}</td>
+              <td>{{candidate.candidateFirstname}}</td>
+              <td>{{candidate.candidateEmail}}</td>
+              <td>{{candidate.candidatePhone}}</td>
+              <td>{{candidate.candidateStatus}}</td>
+          </tr>
+      </tbody>
+
+    </table>
+
+    <div class="border">
+        <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+          <i class="fa fa-user"></i>Ajouter</button>
+    </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Ajouter</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <div class="form-group">
+                <label for="candidateFirstname">Prénom</label>
+                <div class="input-group">
+                  <input id="candidateFirstname" name="candidateFirstname" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="candidateLastname">Nom</label>
+                <div class="input-group">
+                  <input id="candidateLastname" name="candidateLastname" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="candidateEmail">Adresse électronique</label>
+                <div class="input-group">
+                  <input id="candidateEmail" name="candidateEmail" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="candidatePhone">numérone de téléphone</label>
+                <div class="input-group">
+                  <input id="candidatePhone" name="candidatePhone" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="candidateAdress">Adresse</label>
+                <div class="input-group">
+                  <input id="candidateAdress" name="candidateAdress" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="candidateStartDate">StartDate</label>
+                <div class="input-group">
+                  <input id="candidateStartDate" name="candidateStartDate" class="form-control" ngModel>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-info">Submit</button>
+              </div>
+          </form>
+        </div>
+        
+      </ng-template>
+
+</body>
+
+</html>

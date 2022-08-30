@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -25,30 +27,31 @@ public class Candidate {
 	
 	@Id
 	@Column(name = "cand_id")
-	private Long CandidateID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long candidateId;
 	@Column(name = "cand_firstname")
-	private String CandidateFirstname;
+	private String candidateFirstname;
 	@Column(name = "cand_lastname" ) 
 	private String candidateLastname;
 	@Column(name = "cand_email")
-	private String CandidateEmail;
+	private String candidateEmail;
 	@Column(name = "cand_phone")
-	private String CandidatePhone;
+	private String candidatePhone;
 	@Column(name = "cand_adress")
-	private String CandidateAdress;
+	private String candidateAdress;
 	@Column(name = "cand_status")
 	@Enumerated(EnumType.STRING)
-	private EStatus CandidateStatus;
+	private EStatus candidateStatus;
 	@Column(name = "cand_file")
 	@Lob
-	private Byte[] CandidateFile;
+	private Byte[] candidateFile;
 	@Column(name = "offer_status")
-	private String OfferStatus;
+	private String offerStatus;
 	@Column(name = "trial_period")
-	private Date TrialPeriod;
+	private Date trialPeriod;
 	@Column(name = "cand_startdate")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date CandidateStartDate;
+	private Date candidateStartDate;
 	@Column(name = "cand_enddate")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date candidateEndDate;
@@ -72,11 +75,11 @@ public class Candidate {
 	}
 
 	public String getCandidateFirstname() {
-		return CandidateFirstname;
+		return candidateFirstname;
 	}
 
 	public void setCandidateFirstname(String candidateFirstname) {
-		CandidateFirstname = candidateFirstname;
+		this.candidateFirstname = candidateFirstname;
 	}
 
 	public String getCandidateLastname() {
@@ -88,67 +91,67 @@ public class Candidate {
 	}
 
 	public String getCandidateEmail() {
-		return CandidateEmail;
+		return candidateEmail;
 	}
 
 	public void setCandidateEmail(String candidateEmail) {
-		CandidateEmail = candidateEmail;
+		this.candidateEmail = candidateEmail;
 	}
 
 	public String getCandidatePhone() {
-		return CandidatePhone;
+		return candidatePhone;
 	}
 
 	public void setCandidatePhone(String candidatePhone) {
-		CandidatePhone = candidatePhone;
+		this.candidatePhone = candidatePhone;
 	}
 
 	public String getCandidateAdress() {
-		return CandidateAdress;
+		return candidateAdress;
 	}
 
 	public void setCandidateAdress(String candidateAdress) {
-		CandidateAdress = candidateAdress;
+		this.candidateAdress = candidateAdress;
 	}
 
 	public EStatus getCandidateStatus() {
-		return CandidateStatus;
+		return candidateStatus;
 	}
 
 	public void setCandidateStatus(EStatus candidateStatus) {
-		CandidateStatus = candidateStatus;
+		this.candidateStatus = candidateStatus;
 	}
 
 	public Byte[] getCandidateFile() {
-		return CandidateFile;
+		return candidateFile;
 	}
 
 	public void setCandidateFile(Byte[] candidateFile) {
-		CandidateFile = candidateFile;
+		this.candidateFile = candidateFile;
 	}
 
 	public String getOfferStatus() {
-		return OfferStatus;
+		return offerStatus;
 	}
 
 	public void setOfferStatus(String offerStatus) {
-		OfferStatus = offerStatus;
+		this.offerStatus = offerStatus;
 	}
 
 	public Date getTrialPeriod() {
-		return TrialPeriod;
+		return trialPeriod;
 	}
 
 	public void setTrialPeriod(Date trialPeriod) {
-		TrialPeriod = trialPeriod;
+		this.trialPeriod = trialPeriod;
 	}
 
 	public Date getCandidateStartDate() {
-		return CandidateStartDate;
+		return candidateStartDate;
 	}
 
 	public void setCandidateStartDate(Date candidateStartDate) {
-		CandidateStartDate = candidateStartDate;
+		this.candidateStartDate = candidateStartDate;
 	}
 
 	public Date getCandidateEndDate() {
@@ -162,11 +165,11 @@ public class Candidate {
 
 	@Override
 	public String toString() {
-		return "Candidate [CandidateFirstname=" + CandidateFirstname + ", CandidateLastname=" + candidateLastname
-				+ ", CandidateEmail=" + CandidateEmail + ", CandidatePhone=" + CandidatePhone + ", CandidateAdress="
-				+ CandidateAdress + ", CandidateStatus=" + CandidateStatus + ", CandidateFile="
-				+ Arrays.toString(CandidateFile) + ", OfferStatus=" + OfferStatus + ", TrialPeriod=" + TrialPeriod
-				+ ", CandidateStartDate=" + CandidateStartDate + ", candidateEndDate=" + candidateEndDate + ", cvs="
+		return "Candidate [CandidateFirstname=" + candidateFirstname + ", CandidateLastname=" + candidateLastname
+				+ ", CandidateEmail=" + candidateEmail + ", CandidatePhone=" + candidatePhone + ", CandidateAdress="
+				+ candidateAdress + ", CandidateStatus=" + candidateStatus + ", CandidateFile="
+				+ Arrays.toString(candidateFile) + ", OfferStatus=" + offerStatus + ", TrialPeriod=" + trialPeriod
+				+ ", CandidateStartDate=" + candidateStartDate + ", candidateEndDate=" + candidateEndDate + ", cvs="
 				+ cvs + ", interviews=" + interviews + "]";
 	}
 
@@ -184,17 +187,17 @@ public class Candidate {
 			String candidatePhone, String candidateAdress, EStatus candidateStatus, Byte[] candidateFile,
 			String offerStatus, Date trialPeriod, Date candidateStartDate, Date candidateEndDate) {
 		super();
-		CandidateID = candidateID;
-		CandidateFirstname = candidateFirstname;
+		this.candidateId = candidateID;
+		this.candidateFirstname = candidateFirstname;
 		this.candidateLastname = candidateLastname;
-		CandidateEmail = candidateEmail;
-		CandidatePhone = candidatePhone;
-		CandidateAdress = candidateAdress;
-		CandidateStatus = candidateStatus;
-		CandidateFile = candidateFile;
-		OfferStatus = offerStatus;
-		TrialPeriod = trialPeriod;
-		CandidateStartDate = candidateStartDate;
+		this.candidateEmail = candidateEmail;
+		this.candidatePhone = candidatePhone;
+		this.candidateAdress = candidateAdress;
+		this.candidateStatus = candidateStatus;
+		this.candidateFile = candidateFile;
+		this.offerStatus = offerStatus;
+		this.trialPeriod = trialPeriod;
+		this.candidateStartDate = candidateStartDate;
 		this.candidateEndDate = candidateEndDate;
 	}
 	

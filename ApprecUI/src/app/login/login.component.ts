@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 import { Login } from '../model/login';
 import { AuthService } from '../service/auth.service';
 import { LoginserviceService, User } from '../service/loginservice.service';
+
 
 @Component({
   selector: 'app-login',
@@ -28,9 +30,13 @@ export class LoginComponent implements OnInit {
   userLogin(){
 
     this.loginserviceService.loginUser(this.userIds).subscribe(data=>this.auth.login().then(()=>{this.router.navigate([''])}), error=>alert("Please enter correct Email and Password"));
-    
-    
+    console.log(this.loginserviceService.loginUser(this.userIds));
   }
+
+  getUser(): Observable<User>{
+    return this.loginserviceService.loginUser(this.userIds);
+  }
+
 
   /*getRole(){
     this.loginserviceService.loginUser(this.)

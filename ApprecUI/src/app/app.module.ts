@@ -34,7 +34,8 @@ import { MyinterviewsComponent } from './myinterviews/myinterviews.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

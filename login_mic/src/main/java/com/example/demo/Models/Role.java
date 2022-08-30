@@ -29,7 +29,7 @@ public class Role {
 	@Id
 	@Column(name = "role_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String roleId;
+	private Long roleId;
 	
 	@Column(name = "role_order")
 	private Integer roleOrder;

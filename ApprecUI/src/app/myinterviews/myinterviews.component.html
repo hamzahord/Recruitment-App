@@ -1,1 +1,32 @@
-<p>myinterviews works!</p>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" >
+
+</head>
+<body>
+    <h1>Mes entretiens</h1>
+    <table class="table-style">
+
+      <thead>
+          <tr>
+              <th>Ordre</th>
+              <th>Statut</th>
+              <th>Date</th>
+          </tr>
+      </thead>
+  
+      <tbody>
+          <tr *ngFor="let interview of interviews">
+              <td>{{interview.intOrder}}</td>
+              <td>{{interview.intStatus}}</td>
+              <td>{{interview.intDate}}</td>
+          </tr>
+      </tbody>
+
+    </table>
+</body>
+
+</html>

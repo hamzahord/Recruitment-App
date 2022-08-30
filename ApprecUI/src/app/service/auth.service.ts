@@ -19,3 +19,7 @@ export class AuthService {
   }
 
 }
+function ok(arg0: any) {
+  throw new Error('Function not implemented.');
+}
+

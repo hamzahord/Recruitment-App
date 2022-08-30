@@ -18,17 +18,17 @@ public class CV {
 	
 	@Id
 	@Column(name = "cv_id")
-	private Long CvID;
+	private Long cvID;
 	@Lob
 	@Column(name = "cv_file")
-	private Byte[] CvFile;
+	private Byte[] cvFile;
 	@Column(name = "cv_status")
 	@Enumerated(EnumType.STRING)
-	private EStatus CvStatus;
+	private EStatus cvStatus;
 	@Column(name = "is_cv_assigned")
-	private Boolean IsAssigned;
+	private Boolean isAssigned;
 	@Column(name = "cv_ordre")
-	private Integer CvOrdre;
+	private Integer cvOrdre;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -37,42 +37,42 @@ public class CV {
 
 
 	public Byte[] getCvFile() {
-		return CvFile;
+		return cvFile;
 	}
 
 
 	public void setCvFile(Byte[] cvFile) {
-		CvFile = cvFile;
+		this.cvFile = cvFile;
 	}
 
 
 	public EStatus getCvStatus() {
-		return CvStatus;
+		return cvStatus;
 	}
 
 
 	public void setCvStatus(EStatus cvStatus) {
-		CvStatus = cvStatus;
+		this.cvStatus = cvStatus;
 	}
 
 
 	public Boolean getIsAssigned() {
-		return IsAssigned;
+		return isAssigned;
 	}
 
 
 	public void setIsAssigned(Boolean isAssigned) {
-		IsAssigned = isAssigned;
+		this.isAssigned = isAssigned;
 	}
 
 
 	public Integer getCvOrdre() {
-		return CvOrdre;
+		return cvOrdre;
 	}
 
 
 	public void setCvOrdre(Integer cvOrdre) {
-		CvOrdre = cvOrdre;
+		this.cvOrdre = cvOrdre;
 	}
 
 	
@@ -80,10 +80,10 @@ public class CV {
 
 	public CV(Byte[] cvFile, EStatus cvStatus, Boolean isAssigned, Integer cvOrdre) {
 		super();
-		CvFile = cvFile;
-		CvStatus = cvStatus;
-		IsAssigned = isAssigned;
-		CvOrdre = cvOrdre;
+		this.cvFile = cvFile;
+		this.cvStatus = cvStatus;
+		this.isAssigned = isAssigned;
+		this.cvOrdre = cvOrdre;
 	}
 	
 	
