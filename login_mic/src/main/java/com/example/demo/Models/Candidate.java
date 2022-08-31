@@ -1,6 +1,5 @@
 package com.example.demo.Models;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +19,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Type;
+
+
 
 @Entity
 @Table(name = "candidate")
@@ -43,8 +46,8 @@ public class Candidate {
 	@Enumerated(EnumType.STRING)
 	private EStatus candidateStatus;
 	@Column(name = "cand_file")
-	@Lob
-	private Byte[] candidateFile;
+	@Type(type="org.hibernate.type.BinaryType")
+	private byte[] candidateFile;
 	@Column(name = "offer_status")
 	private String offerStatus;
 	@Column(name = "trial_period")
@@ -57,7 +60,7 @@ public class Candidate {
 	private Date candidateEndDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -122,11 +125,11 @@ public class Candidate {
 		this.candidateStatus = candidateStatus;
 	}
 
-	public Byte[] getCandidateFile() {
+	public byte[] getCandidateFile() {
 		return candidateFile;
 	}
 
-	public void setCandidateFile(Byte[] candidateFile) {
+	public void setCandidateFile(byte[] candidateFile) {
 		this.candidateFile = candidateFile;
 	}
 
@@ -168,7 +171,7 @@ public class Candidate {
 		return "Candidate [CandidateFirstname=" + candidateFirstname + ", CandidateLastname=" + candidateLastname
 				+ ", CandidateEmail=" + candidateEmail + ", CandidatePhone=" + candidatePhone + ", CandidateAdress="
 				+ candidateAdress + ", CandidateStatus=" + candidateStatus + ", CandidateFile="
-				+ Arrays.toString(candidateFile) + ", OfferStatus=" + offerStatus + ", TrialPeriod=" + trialPeriod
+				+ ", OfferStatus=" + offerStatus + ", TrialPeriod=" + trialPeriod
 				+ ", CandidateStartDate=" + candidateStartDate + ", candidateEndDate=" + candidateEndDate + ", cvs="
 				+ cvs + ", interviews=" + interviews + "]";
 	}
@@ -184,7 +187,7 @@ public class Candidate {
 	public Candidate() {}
 	
 	public Candidate(Long candidateID, String candidateFirstname, String candidateLastname, String candidateEmail,
-			String candidatePhone, String candidateAdress, EStatus candidateStatus, Byte[] candidateFile,
+			String candidatePhone, String candidateAdress, EStatus candidateStatus, byte[] candidateFile,
 			String offerStatus, Date trialPeriod, Date candidateStartDate, Date candidateEndDate) {
 		super();
 		this.candidateId = candidateID;

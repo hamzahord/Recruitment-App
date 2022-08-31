@@ -51,9 +51,9 @@ export class AllCandComponent implements OnInit {
   onSubmit(f: NgForm) {
     const url = 'http://localhost:8080/addcand';
     this.httpClient.post(url, f.value)
-      .subscribe((result) => {
-        this.candidateService.getCandidates(); //reload the table
-      });
+    .subscribe((result) => {
+      this.candidateService.getCandidates; //reload the table
+    })
     this.modalService.dismissAll(); //dismiss the modal
   }
   

@@ -20,9 +20,5 @@ export class CandidateService {
     return this.httpClient.get<Candidate[]>(`${this.baseUrl}`);
   }
 
-  onSubmit1(f: NgForm) {
-    const url = 'http://localhost:8080/addcand';
-    this.httpClient.post(url, f.value);
-  }
 
 }
